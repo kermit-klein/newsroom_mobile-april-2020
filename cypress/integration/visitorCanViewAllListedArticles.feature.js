@@ -6,6 +6,7 @@ describe("visitor can view all listed articles", () => {
       url: "http://localhost:3000/api/articles",
       response: "fixture:article_list.json",
     });
+    cy.viewport('samsung-s10')
     cy.visit("/");
   });
   it("articles are shown", () => {

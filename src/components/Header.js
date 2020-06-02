@@ -1,11 +1,27 @@
 import React from "react";
-import { Grid } from "semantic-ui-react";
+import { View, Text, StyleSheet } from "react-native";
 
 const Header = () => {
   return (
-    <Grid columns={3} divided centered>
-      <h1 id="header">Daily News Sense</h1>
-    </Grid>
+    <View style={styles.background}>
+      <Text style={styles.header}>Daily News Sense</Text>
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  header: {
+    color: "white",
+    fontSize: "10vw",
+    fontFamily: "serif",
+    fontWeight: "bolder",
+    padding: "10px",
+  },
+  background: {
+    backgroundColor: "#409d9b",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});
+
 export default Header;

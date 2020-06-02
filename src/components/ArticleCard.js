@@ -1,26 +1,30 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { View } from "react-native";
+import { Text, Image, StyleSheet } from "react-native";
 
 const ArticleCard = ({ article }) => {
   return (
-    <View>
-      <Link
-        to={{
-          pathname: `/article/${article.id}`,
-        }}
-        key={article.id}
-        id={"article-" + article.id}
-      >
-        <Image
-          src={article.image}
-          wrapped
-          style={{ height: 200, width: 400 }}
-        />
-        <h5 className="article-title">{article.title}</h5>
-      </Link>
-    </View>
+    <>
+      <Image source={{ uri: article.image }} style={styles.image} />
+      <Text style={styles.title}>{article.title}</Text>
+    </>
   );
 };
+
+const styles = StyleSheet.create({
+  title: {
+    position: "absolute",
+    padding: "4px",
+    paddingLeft: "10vw",
+    paddingRight: "8px",
+    bottom: "8vw",
+    color: "white",
+    fontSize: "6vw",
+    backgroundColor: "rgba(0,0,0,0.5)",
+  },
+  image: {
+    height: "50vw",
+    width: "100vw",
+  },
+});
 
 export default ArticleCard;

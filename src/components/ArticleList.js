@@ -1,16 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ArticleCard from "../components/ArticleCard";
-import { ScrollView } from "react-native";
-
-
-
-
-
+import { FlatList, View, Text } from "react-native";
 
 const ArticleList = () => {
   const [articleList, setArticleList] = useState([]);
-
 
   useEffect(() => {
     const fetchArticleList = async () => {
@@ -25,17 +19,18 @@ const ArticleList = () => {
   }, []);
 
   let articleCards = articleList.map((article) => {
-    return (
-      <ArticleCard
-        article={article}
-      />
-    );
+  return ({key: <ArticleCard article={article} />});
   });
 
+  const examples = [{key: <Text>Hi 1</Text>}, {key: <Text>Hi 2</Text>}]
+
   return (
-    <ScrollView>
-        {articleCards}
-      </ScrollView>
+    <View style={{flex: 1}}>
+      <FlatList 
+        data={articleCards}
+        renderItem={({item}) => <View>{item.key}</View>}
+      />
+    </View>
   );
 };
 
