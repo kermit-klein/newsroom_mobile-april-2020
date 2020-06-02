@@ -1,8 +1,8 @@
 Arguments: 
-  /home/steve/.nvm/versions/node/v12.16.1/bin/node /usr/share/yarn/bin/yarn.js add @types/react-native-axios
+  /home/steve/.nvm/versions/node/v12.16.1/bin/node /usr/share/yarn/bin/yarn.js add @expo-google-fonts/garamond expo-font@~8.1.0
 
 PATH: 
-  /home/steve/.nvm/versions/node/v12.16.1/bin:/usr/local/bin:/usr/local/sbin:/home/steve/.rvm/gems/ruby-2.5.1/bin:/home/steve/.rvm/gems/ruby-2.5.1@global/bin:/home/steve/.rvm/rubies/ruby-2.5.1/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/steve/.rvm/bin:/home/steve/.rvm/bin:/home/steve/.rvm/bin:/home/steve/.rvm/bin:/home/steve/.rvm/bin:/home/steve/.rvm/bin:/home/steve/.rvm/bin
+  /home/steve/.nvm/versions/node/v12.16.1/bin:/usr/local/bin:/usr/local/sbin:/home/steve/.nvm/versions/node/v12.16.1/bin:/home/steve/.rvm/gems/ruby-2.5.1/bin:/home/steve/.rvm/gems/ruby-2.5.1@global/bin:/home/steve/.rvm/rubies/ruby-2.5.1/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/steve/.rvm/bin:/home/steve/.rvm/bin:/home/steve/.rvm/bin:/home/steve/.rvm/bin
 
 Yarn version: 
   1.22.4
@@ -14,7 +14,7 @@ Platform:
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2freact-native-axios: Not found
+  Error: https://registry.yarnpkg.com/@expo-google-fonts%2fgaramond: Not found
       at Request.params.callback [as _callback] (/usr/share/yarn/lib/cli.js:66987:18)
       at Request.self.callback (/usr/share/yarn/lib/cli.js:140748:22)
       at Request.emit (events.js:311:20)
@@ -38,8 +38,11 @@ npm manifest:
       "cypress": "cypress open"
     },
     "dependencies": {
+      "@expo-google-fonts/cinzel": "^0.1.0",
       "axios": "^0.19.2",
+      "decorative": "^0.1.6",
       "expo": "~37.0.3",
+      "expo-font": "~8.1.0",
       "react": "~16.9.0",
       "react-dom": "~16.9.0",
       "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz",
@@ -1048,6 +1051,11 @@ Lockfile:
     dependencies:
       debug "^3.1.0"
       lodash.once "^4.1.1"
+  
+  "@expo-google-fonts/cinzel@^0.1.0":
+    version "0.1.0"
+    resolved "https://registry.yarnpkg.com/@expo-google-fonts/cinzel/-/cinzel-0.1.0.tgz#ee699f00afe3e20838a217d0840ec81885b99934"
+    integrity sha512-hYqQiVZ3zxyupzjSkXjUnNOmNvOO3ygxf5ujANdGKsqEMpxIhvWFIZDq6KiMsZiFIA2ua2hcH35ps1bj2IUQiw==
   
   "@expo/vector-icons@^10.0.2":
     version "10.2.0"
@@ -2426,6 +2434,11 @@ Lockfile:
     version "0.2.0"
     resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.2.0.tgz#eb3913333458775cb84cd1a1fae062106bb87545"
     integrity sha1-6zkTMzRYd1y4TNGh+uBiEGu4dUU=
+  
+  decorative@^0.1.6:
+    version "0.1.6"
+    resolved "https://registry.yarnpkg.com/decorative/-/decorative-0.1.6.tgz#25ca30d90e4860055a0769345260656aa726e938"
+    integrity sha1-Jcow2Q5IYAVaB2k0UmBlaqcm6Tg=
   
   deep-assign@^3.0.0:
     version "3.0.0"
