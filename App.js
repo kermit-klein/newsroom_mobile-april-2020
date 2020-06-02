@@ -1,11 +1,19 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import ArticleList from './src/components/ArticleList';
+import Header from './src/components/Header'
+import axios from 'axios'
+
+axios.defaults.baseURL = "http://localhost:3000/api";
 
 export default function App() {
   return (
+    <>
+    <Header />
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+     <ArticleList />
     </View>
+     </>
   );
 }
 
