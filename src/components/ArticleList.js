@@ -19,16 +19,14 @@ const ArticleList = () => {
   }, []);
 
   let articleCards = articleList.map((article) => {
-  return ({key: <ArticleCard article={article} />});
+    return { key: <ArticleCard article={article} /> };
   });
 
-  const examples = [{key: <Text>Hi 1</Text>}, {key: <Text>Hi 2</Text>}]
-
   return (
-    <View style={{flex: 1}}>
-      <FlatList 
+    <View style={{ flex: 1 }}>
+      <FlatList
         data={articleCards}
-        renderItem={({item}) => <View>{item.key}</View>}
+        renderItem={({ item }) => <View>{item.key}</View>}
       />
     </View>
   );
