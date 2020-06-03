@@ -2,11 +2,13 @@ node_modules/**/*
 .expo/*
 npm-debug.*
 *.jks
+*.idea*
 *.p8
 *.p12
 *.key
 *.mobileprovision
 *.orig.*
+yarn-error.log
 web-build/
 
 # macOS

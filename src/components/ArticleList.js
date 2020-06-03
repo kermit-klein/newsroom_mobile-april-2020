@@ -6,15 +6,15 @@ import { FlatList, View } from "react-native";
 const ArticleList = () => {
   const [articleList, setArticleList] = useState([]);
 
+  const fetchArticleList = async () => {
+    try {
+      const response = await axios.get("/articles");
+      setArticleList(response.data.articles);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
-    const fetchArticleList = async () => {
-      try {
-        const response = await axios.get("/articles");
-        setArticleList(response.data.articles);
-      } catch (error) {
-        console.log(error);
-      }
-    };
     fetchArticleList();
   }, []);
 
