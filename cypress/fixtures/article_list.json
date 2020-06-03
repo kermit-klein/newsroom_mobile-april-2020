@@ -1,0 +1,9 @@
+{
+  "articles": [
+    { "id": 1, "title": "This is the first title",  "image": "https://picsum.photos/800/600" },
+    { "id": 2, "title": "You cannot believe this",  "image": "https://picsum.photos/500/400" },
+    { "id": 3, "title": "This will amaze you",  "image": "https://picsum.photos/400/300" },
+    { "id": 4, "title": "Why aren't you impressed?",  "image": "https://picsum.photos/700/500" },
+    { "id": 5, "title": "Let's see what a really long title looks like. Well, now it's really long.",  "image": "https://picsum.photos/400/300" }
+  ]
+}
