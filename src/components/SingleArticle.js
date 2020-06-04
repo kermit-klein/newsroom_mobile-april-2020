@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { FlatList, View } from "react-native";
+import { Text, View } from "react-native";
 
 const SingleArticle = () => {
-  return <div>BAJS</div>;
+  return (
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <Text>Single Article</Text>
+    </View>
+  );
 };
 export default SingleArticle;
