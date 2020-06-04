@@ -6,6 +6,7 @@ import {
   CinzelDecorative_900Black,
 } from "@expo-google-fonts/cinzel-decorative";
 import { EBGaramond_400Regular } from "@expo-google-fonts/eb-garamond";
+import Category from "./Category";
 
 const Header = () => {
   let [fontsLoaded] = useFonts({
@@ -20,6 +21,7 @@ const Header = () => {
       <View style={styles.background}>
         <Text style={styles.header}>DNS </Text>
         <Text style={styles.sub}> Daily News Sense</Text>
+        <Category />
       </View>
     );
   }

@@ -2,6 +2,7 @@ import React from "react";
 import { Menu, Icon } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
 import "../css/Navbar.css";
+import { Container, Navbar } from "navbar-native";
 
 const Navbar = () => {
   let categories = [
