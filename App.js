@@ -17,10 +17,7 @@ export default function App() {
     <>
       <NavigationContainer>
         <Header />
-        <Stack.Navigator initialRouteName="ArticleList">
-          {/* <View style={styles.container}>
-          <ArticleList />
-          </View> */}
+        <Stack.Navigator headerMode="none" initialRouteName="ArticleList">
           <Stack.Screen name="ArticleList" component={ArticleList} />
           <Stack.Screen name="SingleArticle" component={SingleArticle} />
         </Stack.Navigator>

@@ -58,7 +58,9 @@ const ArticleList = ({ navigation }) => {
       key: (
         <TouchableOpacity
           onPress={() =>
-            navigation.navigate("SingleArticle", { name: "SingleArticle" })
+            navigation.navigate("SingleArticle", {
+              articleId: article.id,
+            })
           }
         >
           <ArticleCard article={article} />
