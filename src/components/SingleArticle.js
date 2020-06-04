@@ -4,18 +4,18 @@ import { View, Image } from "react-native";
 
 
 const SingleArticle = ({ route }) => {
-  const { articleid } = route.params;
-  console.log(articleid)
+  const { articleId } = route.params;
+  console.log(articleId)
   const [article, setArticle] = useState()
 
-  useEffect((articleid) => {
-    debugger
-    const chooseArticle = async (articleid) => {
-      let response = await axios.get(`/articles/${articleid}`);
+  useEffect((articleId) => {
+   debugger
+    const chooseArticle = async (articleId) => {
+      let response = await axios.get(`/articles/${articleId}`);
       debugger
       setArticle(response.data.article);
     };
-    chooseArticle(articleid);
+    chooseArticle(articleId);
 
   }, [])
   const specificArticle =
@@ -47,7 +47,7 @@ const SingleArticle = ({ route }) => {
 
   return (
     <View>
-     
+     {specificArticle}
       </View>
   
   

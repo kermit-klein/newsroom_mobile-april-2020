@@ -13,8 +13,8 @@ describe("visitor can view a specific article", () => {
     });
     cy.viewport("samsung-s10");
     cy.visit("/");
-    cy.get("#article-title-1")
-      .should("contain", "This is the first title")
+    cy.get("#button-1")
+      //.should("contain", "This is the first title")
       .click();
   });
   it("article is displayed", () => {

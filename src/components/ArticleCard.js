@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     paddingRight: 8,
     bottom: 8,
     color: "white",
-    fontSize: 6,
+    fontSize: 20,
     backgroundColor: "rgba(0,0,0,0.5)",
   },
   image: {
