@@ -1,18 +1,30 @@
-import React from "react";
-import { Text, Image, StyleSheet } from "react-native";
+// import React from "react";
+import * as React from "react";
+import { View, Text, Image, StyleSheet } from "react-native";
+import { TouchableHighlight } from "react-native-gesture-handler";
 
-const ArticleCard = ({ article }) => {
+const ArticleCard = (props) => {
   const viewArticle = (
-    <>
-      <Image
-        className={`article-image-${article.id}`}
-        source={{ uri: article.image }}
-        style={styles.image}
-      />
-      <Text id={`article-title-${article.id}`} style={styles.title}>
-        {article.title}
-      </Text>
-    </>
+    <TouchableHighlight
+      key={props.article.id}
+      id={"button-" + props.article.id}
+      onPress={() =>
+        props.navigation.navigate("SingleArticle", {
+          articleId: props.article.id,
+        })
+      }
+    >
+      <View>
+        <Image
+          className={`article-image-${props.article.id}`}
+          source={{ uri: props.article.image }}
+          style={styles.image}
+        />
+        <Text id={`article-title-${props.article.id}`} style={styles.title}>
+          {props.article.title}
+        </Text>
+      </View>
+    </TouchableHighlight>
   );
   return <>{viewArticle}</>;
 };
