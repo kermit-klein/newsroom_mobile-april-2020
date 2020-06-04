@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ArticleCard from "../components/ArticleCard";
 import { FlatList, View } from "react-native";
+
 const ArticleList = ({ navigation }) => {
   const [articleList, setArticleList] = useState(false);
   const fetchArticleList = async () => {

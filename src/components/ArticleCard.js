@@ -1,4 +1,3 @@
-// import React from "react";
 import * as React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { TouchableHighlight } from "react-native-gesture-handler";
@@ -7,7 +6,6 @@ const ArticleCard = (props) => {
   const viewArticle = (
     <TouchableHighlight
       key={props.article.id}
-      id={"button-" + props.article.id}
       onPress={() =>
         props.navigation.navigate("SingleArticle", {
           articleId: props.article.id,
