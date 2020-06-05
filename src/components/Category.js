@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, StyleSheet } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 import { AppLoading } from "expo";
 import { useFonts } from "@use-expo/font";
 import fonts from "./module/fonts";
 
-const Category = () => {
-  const [selectedValue, setSelectedValue] = useState("current");
-
+const Category = (props) => {
   let listCategory = [
+    { label: "All", value: "all" },
     { label: "Current", value: "current" },
     { label: "Economy", value: "economy" },
     { label: "World", value: "world" },
@@ -30,12 +29,10 @@ const Category = () => {
           containerStyle={{
             height: 45,
             flex: 1,
-            // zIndex: 1,
           }}
           style={{ backgroundColor: "#dbdbdb" }}
           dropDownStyle={{
             backgroundColor: "#dbdbdb",
-            // zIndex: 200,
           }}
           labelStyle={{
             color: "black",
@@ -44,7 +41,7 @@ const Category = () => {
           }}
           onChangeItem={(item) => {
             console.log(item.value);
-            setSelectedValue(item.value);
+            props.categorySelect(item.value);
           }}
           placeholder="Category"
         />
@@ -56,7 +53,7 @@ const styles = StyleSheet.create({
   category: {
     flexDirection: "row",
     justifyContent: "flex-end",
-    minHeight: 215,
+    zIndex: 10,
   },
 });
 
