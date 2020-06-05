@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Platform } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 import { AppLoading } from "expo";
 import { useFonts } from "@use-expo/font";
@@ -53,7 +53,9 @@ const styles = StyleSheet.create({
   category: {
     flexDirection: "row",
     justifyContent: "flex-end",
-    zIndex: 10,
+    ...(Platform.OS !== "android" && {
+      zIndex: 10,
+    }),
   },
 });
 
