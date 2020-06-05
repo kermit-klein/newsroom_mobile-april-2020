@@ -38,10 +38,10 @@ describe("User can login", () => {
       cy.visit("/");
       cy.wait(1000);
       cy.get("[data-testid=Loginbutton]").click();
-      cy.get("#login-form").within(() => {
-        cy.get("#email").type("user@mail.com");
-        cy.get("#password").type("password");
-        cy.get("Button#submit").contains("Submit").click();
+      cy.get("[data-testid=login-form]").within(() => {
+        cy.get("[data-testid=email]").type("user@mail.com");
+        cy.get("[data-testid=password]").type("password");
+        cy.get("[data-testid=submit]").contains("Submit").click();
       });
     });
 
