@@ -8,6 +8,7 @@ import SingleArticle from "./src/components/SingleArticle";
 import Header from "./src/components/Header";
 import axios from "axios";
 import Footer from "./src/components/Footer";
+import Login from "./src/components/Login";
 
 axios.defaults.baseURL = "http://localhost:3000/api";
 const Stack = createStackNavigator();
@@ -20,6 +21,7 @@ export default function App() {
         <Stack.Navigator headerMode="none" initialRouteName="ArticleList">
           <Stack.Screen name="ArticleList" component={ArticleList} />
           <Stack.Screen name="SingleArticle" component={SingleArticle} />
+          <Stack.Screen name="Login" component={Login} />
         </Stack.Navigator>
         <Footer />
       </NavigationContainer>
