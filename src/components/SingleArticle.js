@@ -29,13 +29,15 @@ const SingleArticle = ({ route }) => {
         </Text>
       </View>
       <View style={styles.background}>
-        <View id={"article-" + article.id + "-date"} className="published-at">
-          <Text style={styles.p}>
+        <View className="published-at">
+          <Text id={"article-" + article.id + "-date"} style={styles.p}>
             {"Published at"} {article.published_at}
           </Text>
         </View>
-        <View id={"article-" + article.id + "-body"} className="article-body">
-          <Text style={styles.p}>{article.body}</Text>
+        <View className="article-body">
+          <Text id={"article-" + article.id + "-body"} style={styles.p}>
+            {article.body}
+          </Text>
         </View>
       </View>
     </View>
