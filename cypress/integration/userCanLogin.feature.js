@@ -36,7 +36,8 @@ describe("User can login", () => {
         },
       });
       cy.visit("/");
-      cy.get("button#login").click();
+      cy.wait(1000);
+      cy.get("[data-testid=Loginbutton]").click();
       cy.get("#login-form").within(() => {
         cy.get("#email").type("user@mail.com");
         cy.get("#password").type("password");
