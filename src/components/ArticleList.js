@@ -25,7 +25,7 @@ const ArticleList = () => {
 
   return (
     <View style={{ flex: 1 }}>
-      <Category />
+      
       <FlatList
         data={articleCards}
         renderItem={({ item }) => <View>{item.key}</View>}

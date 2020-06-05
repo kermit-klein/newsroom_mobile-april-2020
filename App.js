@@ -4,26 +4,20 @@ import ArticleList from "./src/components/ArticleList";
 import Header from "./src/components/Header";
 import axios from "axios";
 import Footer from "./src/components/Footer";
-
+import Category from "./src/components/Category";
 axios.defaults.baseURL = "http://localhost:3000/api";
 
-export default function App() {
+const App = () => {
   return (
-    <>
+    <View style={{ flex: 1 }}>
       <Header />
-      <View style={styles.container}>
+      <Category />
+      <View style={{ flex: 1, height: 1 }}>
         <ArticleList />
       </View>
       <Footer />
-    </>
+    </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+export default App;
