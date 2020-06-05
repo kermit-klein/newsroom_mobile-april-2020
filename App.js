@@ -14,16 +14,6 @@ const Stack = createStackNavigator();
 
 const App = () => {
   return (
-<<<<<<< HEAD
-    <View style={{ flex: 1 }}>
-      <Header />
-      <Category />
-      <View style={{ flex: 1, height: 1 }}>
-        <ArticleList />
-      </View>
-      <Footer />
-    </View>
-=======
     <>
       <NavigationContainer>
         <Header />
@@ -34,8 +24,7 @@ const App = () => {
         <Footer />
       </NavigationContainer>
     </>
->>>>>>> 95ba0fa234d5573744f6edf3c3370f2d3d4f53b3
   );
-}
+};
 
 export default App;

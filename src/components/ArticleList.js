@@ -19,15 +19,6 @@ const ArticleList = ({ navigation }) => {
   }, []);
 
   return (
-<<<<<<< HEAD
-    <View style={{ flex: 1 }}>
-      
-      <FlatList
-        data={articleCards}
-        renderItem={({ item }) => <View>{item.key}</View>}
-      />
-    </View>
-=======
     <>
       {articleList && (
         <FlatList
@@ -38,7 +29,6 @@ const ArticleList = ({ navigation }) => {
         />
       )}
     </>
->>>>>>> 95ba0fa234d5573744f6edf3c3370f2d3d4f53b3
   );
 };
 export default ArticleList;
