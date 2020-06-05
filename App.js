@@ -17,6 +17,7 @@ const App = () => {
     <>
       <NavigationContainer>
         <Header />
+        <Category />
         <Stack.Navigator headerMode="none" initialRouteName="ArticleList">
           <Stack.Screen name="ArticleList" component={ArticleList} />
           <Stack.Screen name="SingleArticle" component={SingleArticle} />
