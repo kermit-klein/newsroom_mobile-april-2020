@@ -5,7 +5,6 @@ import { EBGaramond_400Regular } from "@expo-google-fonts/eb-garamond";
 
 const SingleArticle = ({ route }) => {
   const { articleId } = route.params;
-  console.log(articleId);
   const [article, setArticle] = useState({});
 
   const chooseArticle = async () => {
@@ -18,24 +17,20 @@ const SingleArticle = ({ route }) => {
   }, []);
   const specificArticle = article && (
     <View>
-      <View key={article.id} className="article-title">
-        <Image
-          className={`article-image-${article.id}`}
-          source={{ uri: article.image }}
-          style={styles.image}
-        />
-        <Text id={"article-" + article.id + "-title"} style={styles.title}>
+      <View key={article.id}>
+        <Image source={{ uri: article.image }} style={styles.image} />
+        <Text id={"article-title-" + article.id} style={styles.title}>
           {article.title}
         </Text>
       </View>
       <View style={styles.background}>
-        <View className="published-at">
-          <Text id={"article-" + article.id + "-date"} style={styles.p}>
+        <View>
+          <Text id={"article-date-" + article.id} style={styles.p}>
             {"Published at"} {article.published_at}
           </Text>
         </View>
-        <View className="article-body">
-          <Text id={"article-" + article.id + "-body"} style={styles.p}>
+        <View>
+          <Text id={"article-body-" + article.id} style={styles.p}>
             {article.body}
           </Text>
         </View>

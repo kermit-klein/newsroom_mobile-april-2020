@@ -13,9 +13,8 @@ const ArticleCard = (props) => {
         });
       }}
     >
-      <View className={`articleCard-${props.article.id}`}>
+      <View>
         <Image
-          className={`article-image-${props.article.id}`}
           source={{ uri: props.article.image }}
           style={styles.image}
         />
