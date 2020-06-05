@@ -9,7 +9,6 @@ const SingleArticle = ({ route }) => {
   const [article, setArticle] = useState({});
 
   const chooseArticle = async () => {
-    debugger;
     let response = await axios.get(`/articles/${articleId}`);
     setArticle(response.data.article);
   };

@@ -18,13 +18,12 @@ const ArticleList = ({ navigation }) => {
   }, []);
 
   return (
-    // <View style={{ flex: 1 }}>
     <>
       {articleList && (
         <FlatList
           data={articleList}
           renderItem={({ item }) => (
-            <ArticleCard article={item} navigation={navigation} />
+            <ArticleCard article={item} navigation={navigation} id={item.id+1}/>
           )}
         />
       )}
