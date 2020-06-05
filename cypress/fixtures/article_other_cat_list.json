@@ -1,0 +1,51 @@
+{
+  "page": 1,
+  "next_page": null,
+  "articles": [
+    {
+      "id": 1,
+      "title": "title1",
+      "category": "other",
+      "published_at": "YYYY-MM-dd hh:mm",
+      "location": "Sweden",
+      "international": true,
+      "image": "https://picsum.photos/400/300"
+    },
+    {
+      "id": 2,
+      "title": "title2",
+      "category": "other",
+      "published_at": "YYYY-MM-dd hh:mm",
+      "location": "Sweden",
+      "international": true,
+      "image": "https://picsum.photos/400/300"
+    },
+    {
+      "id": 3,
+      "title": "title3",
+      "category": "other",
+      "published_at": "YYYY-MM-dd hh:mm",
+      "location": "Sweden",
+      "international": true,
+      "image": "https://picsum.photos/400/300"
+    },
+    {
+      "id": 4,
+      "title": "title4",
+      "category": "other",
+      "published_at": "YYYY-MM-dd hh:mm",
+      "location": "Sweden",
+      "international": true,
+      "image": "https://picsum.photos/400/300"
+    },
+    {
+      "id": 5,
+      "title": "title5",
+      "category": "other",
+      "published_at": "YYYY-MM-dd hh:mm",
+      "location": "Sweden",
+      "international": true,
+      "image": "https://picsum.photos/400/300"
+    }
+  ]
+}
