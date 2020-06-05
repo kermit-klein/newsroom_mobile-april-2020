@@ -4,7 +4,7 @@ import ArticleCard from "../components/ArticleCard";
 import { FlatList, View } from "react-native";
 
 const ArticleList = ({ navigation }) => {
-  const [articleList, setArticleList] = useState(false);
+  const [articleList, setArticleList] = useState([]);
   const fetchArticleList = async () => {
     try {
       const response = await axios.get("/articles");
@@ -23,7 +23,7 @@ const ArticleList = ({ navigation }) => {
         <FlatList
           data={articleList}
           renderItem={({ item }) => (
-            <ArticleCard article={item} navigation={navigation} id={item.id+1}/>
+            <ArticleCard article={item} navigation={navigation} />
           )}
         />
       )}
