@@ -38,6 +38,7 @@ const Category = (props) => {
             color: "black",
             fontSize: 16,
             fontFamily: "EBGaramond_400Regular",
+            fontWeight: "bold",
           }}
           onChangeItem={(item) => {
             console.log(item.value);
