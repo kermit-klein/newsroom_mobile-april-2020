@@ -3,9 +3,8 @@ import axios from "axios";
 import ArticleCard from "../components/ArticleCard";
 import { FlatList, View } from "react-native";
 
-const ArticleList = () => {
+const ArticleList = ({ navigation }) => {
   const [articleList, setArticleList] = useState([]);
-
   const fetchArticleList = async () => {
     try {
       const response = await axios.get("/articles");
@@ -18,18 +17,17 @@ const ArticleList = () => {
     fetchArticleList();
   }, []);
 
-  let articleCards = articleList.map((article) => {
-    return { key: <ArticleCard article={article} /> };
-  });
-
   return (
-    <View style={{ flex: 1 }}>
-      <FlatList
-        data={articleCards}
-        renderItem={({ item }) => <View>{item.key}</View>}
-      />
-    </View>
+    <>
+      {articleList && (
+        <FlatList
+          data={articleList}
+          renderItem={({ item }) => (
+            <ArticleCard article={item} navigation={navigation} />
+          )}
+        />
+      )}
+    </>
   );
 };
-
 export default ArticleList;
