@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ArticleCard from "../components/ArticleCard";
 import { FlatList, View } from "react-native";
+import Category from "./Category";
 
 const ArticleList = () => {
   const [articleList, setArticleList] = useState([]);
@@ -24,6 +25,7 @@ const ArticleList = () => {
 
   return (
     <View style={{ flex: 1 }}>
+      <Category />
       <FlatList
         data={articleCards}
         renderItem={({ item }) => <View>{item.key}</View>}

@@ -1,31 +1,38 @@
 import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
-import { Picker } from "@react-native-community/picker";
+import DropDownPicker from "react-native-dropdown-picker";
 
 const Category = () => {
-  const [selectedValue, setSelectedValue] = useState("Category");
+  const [selectedValue, setSelectedValue] = useState("current");
+
+  let listCategory = [
+    { label: "Current", value: "current" },
+    { label: "Economy", value: "economy" },
+    { label: "World", value: "world" },
+    { label: "Entertainment", value: "entertainment" },
+  ];
 
   return (
-    <View style={styles.container}>
-      <Picker
-        selectedValue={selectedValue}
-        style={{ height: 50, width: 150 }}
-        onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-      >
-        <Picker.Item label="Economy" value="economy" />
-        <Picker.Item label="World" value="world" />
-        <Picker.Item label="Sport" value="sport" />
-        <Picker.Item label="Entertainment" value="entertainment" />
-      </Picker>
+    <View style={styles.category}>
+      <DropDownPicker
+        items={listCategory}
+        defaultValue={null}
+        containerStyle={{ height: 40 }}
+        style={{ backgroundColor: "#fafafa" }}
+        dropDownStyle={{ backgroundColor: "#fafafa" }}
+        onChangeItem={(item) => {
+          console.log(item.value);
+          setSelectedValue(item.value);
+        }}
+        placeholder="Category"
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 40,
-    alignItems: "center",
+  category: {
+    alignItems: "flex-end",
   },
 });
 

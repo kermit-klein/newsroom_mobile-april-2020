@@ -19,17 +19,17 @@ const ArticleCard = ({ article }) => {
 const styles = StyleSheet.create({
   title: {
     position: "absolute",
-    padding: "4px",
-    paddingLeft: "10vw",
-    paddingRight: "8px",
-    bottom: "8vw",
+    padding: 4,
+    paddingLeft: 10,
+    paddingRight: 8,
+    bottom: 8,
     color: "white",
-    fontSize: "6vw",
+    fontSize: 20,
     backgroundColor: "rgba(0,0,0,0.5)",
   },
   image: {
-    height: "50vw",
-    width: "100vw",
+    height: 250,
+    width: 420,
   },
 });
 

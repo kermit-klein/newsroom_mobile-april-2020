@@ -5179,6 +5179,14 @@ react-native-dropdown-menu@^2.0.0:
   dependencies:
     prop-types "^15.6.1"
 
+react-native-dropdown-picker@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-dropdown-picker/-/react-native-dropdown-picker-3.0.0.tgz#33f1fea4217a52f97f6aa4d76f8c14ac06897f1a"
+  integrity sha512-onRiTbxliyXdyiKlM1NvEODQHD9hsRuoKYHcukgTumgfXQjQ0YXyuJGAl97dSueKh+aUC5I89zKVSVEHuweg4g==
+  dependencies:
+    prop-types "^15.7.2"
+    react-native-vector-icons "^6.6.0"
+
 react-native-gesture-handler@^1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.6.1.tgz#678e2dce250ed66e93af409759be22cd6375dd17"
