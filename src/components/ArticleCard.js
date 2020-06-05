@@ -1,16 +1,17 @@
 import * as React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
-import { TouchableHighlight } from "react-native-gesture-handler";
+import { TouchableOpacity } from "react-native";
 
 const ArticleCard = (props) => {
   const viewArticle = (
-    <TouchableHighlight
+    <TouchableOpacity
+      testID={`article-${props.article.id}`}
       key={props.article.id}
-      onPress={() =>
+      onPress={() => {
         props.navigation.navigate("SingleArticle", {
           articleId: props.article.id,
-        })
-      }
+        });
+      }}
     >
       <View className={`articleCard-${props.article.id}`}>
         <Image
@@ -22,7 +23,7 @@ const ArticleCard = (props) => {
           {props.article.title}
         </Text>
       </View>
-    </TouchableHighlight>
+    </TouchableOpacity>
   );
   return <>{viewArticle}</>;
 };

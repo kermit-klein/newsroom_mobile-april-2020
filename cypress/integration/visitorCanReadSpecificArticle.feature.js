@@ -15,8 +15,10 @@ describe("visitor can view a specific article", () => {
     cy.visit("/");
   });
   it("article is displayed", () => {
-    cy.get(".article-image-1").find("img").should("have.attr", "src").click();
     cy.wait(1000);
+    cy.get("[data-testid=article-1]").click();
+    // cy.get(".articleCard-1").click();
+    // cy.wait(1000);
     cy.get("div#article-1-title").should("contain", "Free title");
     // cy.get("#article-1-date").should("contain", "2020-02-20 02:02");
     // cy.get("#article-1-body").should("contain", "Lorem ipsum");
