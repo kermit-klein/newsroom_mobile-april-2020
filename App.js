@@ -9,10 +9,10 @@ import Header from "./src/components/Header";
 import axios from "axios";
 import Footer from "./src/components/Footer";
 
-axios.defaults.baseURL = "http://localhost:3000/api";
+axios.defaults.baseURL = "https://newsroom-api.herokuapp.com/api";
 const Stack = createStackNavigator();
 
-export default function App() {
+const App = () => {
   return (
     <>
       <NavigationContainer>
@@ -25,13 +25,6 @@ export default function App() {
       </NavigationContainer>
     </>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+export default App;
