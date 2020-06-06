@@ -61,4 +61,24 @@ describe("User can login", () => {
       expect("#article-1").to.exist;
     });
   });
+  
+  describe('unsuccessfully', () => {
+    it("with invalid credentials", () => {
+      cy.route({
+        method: "POST",
+        url: "http://localhost:3000/api/auth/*",
+        response: "fixture:unsuccessful_login.json",
+        headers: {
+          uid:"user@mail.com"
+        },
+        status: 400
+      })
+      cy.get("#login-form").within(() => {
+        cy.get("#email").type("user@mail.com");
+        cy.get("#password").type("wrongpassword");
+        cy.get('Button').contains('Submit').click()
+      });
+      cy.get("#error-message").should("contain", "Invalid login credentials. Please try again.");
+    });
+  })
 });
