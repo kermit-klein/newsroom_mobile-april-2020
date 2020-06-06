@@ -6,7 +6,7 @@ describe("Visitor can select category all", () => {
       url: "http://localhost:3000/api/articles",
       response: "fixture:article_category_list.json",
     });
-    cy.viewport("samsung-s10");
+    cy.viewport("iphone-x");
     cy.visit("/");
   });
 
