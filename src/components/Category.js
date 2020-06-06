@@ -41,7 +41,6 @@ const Category = (props) => {
             fontWeight: "bold",
           }}
           onChangeItem={(item) => {
-            console.log(item.value);
             props.categorySelect(item.value);
           }}
           placeholder="Category"
