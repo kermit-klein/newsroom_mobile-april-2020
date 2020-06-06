@@ -12,33 +12,30 @@ import {
   Image,
 } from "react-native";
 
-const Login = ({ navigation }) => {
+const Login = ({ dispatch }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const authenticated = useSelector((state) => state.authenticated)
+  const authenticated = useSelector((state) => state.authenticated);
   const [errorMessage, setErrorMessage] = useState("");
-  
-  const onSubmithandler = async (e) => {
 
-    //e.preventDefault();
+  const onSubmithandler = async () => {
+
     try {
-      e.persist
-      const response = await authenticated.signIn(
-        email, password
-      )
+      const response = await auth.signIn(email, password);
       debugger
       dispatch({
+      
         type: "CHECK_LOGIN",
         payload: {
-          authenticated: response.data,
-        }
-      })
+          authenticated: response.success,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+      debugger;
+      //setErrorMessage(error.response.data.errors[0])
     }
-    catch (error) {
-      debugger
-      setErrorMessage(error.response.data.errors[0])
-    }
-  }
+  };
   return (
     <View testID={"login-form"} style={styles.container}>
       <Text style={styles.sub}>Login</Text>
@@ -70,7 +67,7 @@ const Login = ({ navigation }) => {
       <TouchableHighlight
         testID={"submit"}
         style={[styles.buttonContainer, styles.loginButton]}
-        onPress={(e) => onSubmithandler()}
+        onPress={() => onSubmithandler()}
       >
         <Text style={styles.loginText}>Submit</Text>
       </TouchableHighlight>
@@ -131,4 +128,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default connect()(Login);
