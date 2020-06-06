@@ -21,7 +21,7 @@ const Login = ({ dispatch }) => {
 
     try {
       const response = await auth.signIn(email, password);
-      debugger
+      
       dispatch({
       
         type: "CHECK_LOGIN",
@@ -30,7 +30,6 @@ const Login = ({ dispatch }) => {
         },
       });
     } catch (error) {
-      console.log(error);
       debugger;
     }
   };
@@ -85,7 +84,7 @@ const Login = ({ dispatch }) => {
           </View>
         </Modal>
       )}
-      <Text>{errorMessage}</Text>
+      <Text testID={"error-message"}>{errorMessage}</Text>
     </View>
       
   );
