@@ -5,7 +5,7 @@ const rootReducer = (state = initialState, action) => {
     case "CHECK_LOGIN":
       return {
         ...state,
-        authenticated: action.payload.authenticated
+        authenticated: action.payload.authenticated,
       }
     default:
       return state;

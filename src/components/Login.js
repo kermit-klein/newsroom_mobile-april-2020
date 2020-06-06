@@ -1,6 +1,7 @@
 import { useState } from "react";
 import * as React from "react";
 import { connect, useSelector } from "react-redux";
+import auth from "../modules/auth";
 
 import {
   View,
@@ -15,31 +16,29 @@ const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const authenticated = useSelector((state) => state.authenticated)
+  const [errorMessage, setErrorMessage] = useState("");
   
   const onSubmithandler = async (e) => {
-    console.log(email)
-    console.log(password) 
+
     //e.preventDefault();
     try {
       e.persist
       const response = await authenticated.signIn(
-        e.target.email.value,
-        e.target.password.value
+        email, password
       )
-        props.dispatch({
-          type: "CHECK_LOGIN",
-          payload: {
-            authenticated: response.data,
-            uid: response.data.uid
-          }
-        })
-    } 
-    catch (error) {
-        setMessage(error.response.data.errors[0])
-      }
-    
+      debugger
+      dispatch({
+        type: "CHECK_LOGIN",
+        payload: {
+          authenticated: response.data,
+        }
+      })
     }
-  
+    catch (error) {
+      debugger
+      setErrorMessage(error.response.data.errors[0])
+    }
+  }
   return (
     <View testID={"login-form"} style={styles.container}>
       <Text style={styles.sub}>Login</Text>
