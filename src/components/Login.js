@@ -6,106 +6,105 @@ import {
   View,
   Text,
   StyleSheet,
-  TouchableHighlight,
+  TouchableOpacity,
   TextInput,
-  Modal,
 } from "react-native";
 
-const Login = ({ dispatch }) => {
+const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const authenticated = useSelector((state) => state.authenticated);
+  // const authenticated = useSelector((state) => state.authenticated);
   const [errorMessage, setErrorMessage] = useState("");
+  const [modalVisible, setModalVisible] = useState(false);
 
-  const onSubmithandler = async () => {
-
+  const signin = async () => {
     try {
       const response = await auth.signIn(email, password);
-      
-      dispatch({
-      
-        type: "CHECK_LOGIN",
-        payload: {
-          authenticated: response.success,
-        },
-      });
+      response.success &&
+        props.dispatch({
+          type: "CHECK_LOGIN",
+          payload: {
+            authenticated: response.success,
+          },
+        });
     } catch (error) {
       debugger;
+      console.log(error.response.data.errors[0]);
     }
+  };
+
+  const onSubmithandler = (event) => {
+    event.persist();
+    signin();
   };
   return (
     <View>
-      {!authenticated && (
-        <Modal
-          style={styles.formModal}
-          presentationStyle="overFullScreen"
-          animationType="fade"
-          transparent={true}
-          visible={true}
-          onRequestClose={() => {
-            Alert.alert("Modal has been closed.");
-          }}
-        >
-
-          <View testID={"login-form"} style={styles.container}>
-            <Text style={styles.sub}>Login</Text>
-            <View style={styles.inputContainer}>
-              <TextInput
-                testID={"email"}
-                style={styles.inputs}
-                placeholder="Email"
-                keyboardType="email-address"
-                underlineColorAndroid="transparent"
-                id="email"
-                value={email}
-                onChangeText={(email) => setEmail(email)}
-              />
-            </View>
-            <View style={styles.inputContainer}>
-              <TextInput
-                testID={"password"}
-                style={styles.inputs}
-                placeholder="Password"
-                secureTextEntry={true}
-                underlineColorAndroid="transparent"
-                id="password"
-                value={password}
-                onChangeText={(password) => setPassword(password)}
-              />
-            </View>
-
-            <TouchableHighlight
-              testID={"submit"}
-              style={[styles.buttonContainer, styles.loginButton]}
-              onPress={() => onSubmithandler()}
-            >
-              <Text style={styles.loginText}>Submit</Text>
-            </TouchableHighlight>
+      {props.visibleForm && (
+        <View testID={"login-form"} style={styles.background}>
+          <Text style={styles.sub}>Login</Text>
+          <View style={styles.inputContainer}>
+            <TextInput
+              testID={"email"}
+              style={styles.inputs}
+              placeholder="Email"
+              keyboardType="email-address"
+              underlineColorAndroid="transparent"
+              id="email"
+              value={email}
+              onChangeText={(email) => setEmail(email)}
+            />
           </View>
-        </Modal>
+          <View style={styles.inputContainer}>
+            <TextInput
+              testID={"password"}
+              style={styles.inputs}
+              placeholder="Password"
+              secureTextEntry={true}
+              underlineColorAndroid="transparent"
+              id="password"
+              value={password}
+              onChangeText={(password) => setPassword(password)}
+            />
+          </View>
+          <TouchableOpacity
+            testID={"submit"}
+            style={styles.buttonContainer}
+            onPress={(e) => {
+              onSubmithandler(e);
+              props.setModalVisible(false);
+            }}
+          >
+            <Text style={styles.submitText}>Submit</Text>
+          </TouchableOpacity>
+        </View>
       )}
-      <Text testID={"error-message"}>{errorMessage}</Text>
+      <Text style={styles.errorText} testID={"error-message"}>
+        {errorMessage}
+      </Text>
     </View>
-      
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  backgound: {
     flex: 1,
+    marginBottom: 50,
+    marginTop: 50,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#DCDCDC",
+    backgroundColor: "#FFFFFF",
+    paddingTop: 30,
+    paddingBottom: 50,
   },
   inputContainer: {
-    borderBottomColor: "#F5FCFF",
+    borderColor: "#409d9b",
     backgroundColor: "#FFFFFF",
-    borderRadius: 30,
-    borderBottomWidth: 1,
+    borderWidth: 2,
+    borderRadius: 10,
+    height: 40,
     width: 250,
-    height: 45,
     marginBottom: 20,
-    flexDirection: "row",
+    flexDirection: "column",
     alignItems: "center",
   },
   inputs: {
@@ -114,32 +113,36 @@ const styles = StyleSheet.create({
     borderBottomColor: "#FFFFFF",
     flex: 1,
   },
-  inputIcon: {
-    width: 30,
-    height: 30,
-    marginLeft: 15,
-    justifyContent: "center",
-  },
   buttonContainer: {
-    height: 45,
-    flexDirection: "row",
+    height: 40,
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 20,
-    width: 250,
     borderRadius: 30,
-  },
-  loginButton: {
     backgroundColor: "#409d9b",
+    shadowColor: "rgba(0.6, 0.5, 0.5, 0.5)",
+    shadowOpacity: 0.8,
+    elevation: 6,
+    shadowRadius: 20,
+    shadowOffset: { width: 2, height: 13 },
   },
-  loginText: {
-    color: "white",
+  submitText: {
+    color: "#FFFFFF",
+    fontSize: 20,
+    letterSpacing: 1,
+    fontWeight: "bold",
+    fontFamily: "EBGaramond_400Regular",
   },
   sub: {
     color: "#409d9b",
-    fontSize: 20,
+    fontSize: 25,
     fontFamily: "EBGaramond_400Regular",
     padding: 15,
+    fontWeight: "bold",
+    letterSpacing: 1,
+  },
+  errorText: {
+    color: "red",
   },
 });
 

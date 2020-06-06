@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ArticleCard from "../components/ArticleCard";
-import { FlatList, Text, TouchableOpacity, StyleSheet } from "react-native";
+import {
+  FlatList,
+  StyleSheet,
+} from "react-native";
 import { EBGaramond_400Regular } from "@expo-google-fonts/eb-garamond";
 
 const ArticleList = ({ navigation }) => {
@@ -20,14 +23,6 @@ const ArticleList = ({ navigation }) => {
 
   return (
     <>
-      <TouchableOpacity
-        testID={"Loginbutton"}
-        onPress={() => {
-          navigation.navigate("Login");
-        }}
-      >
-        <Text style={styles.sub}>Login</Text>
-      </TouchableOpacity>
       {articleList && (
         <FlatList
           data={articleList}

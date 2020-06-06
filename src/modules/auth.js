@@ -8,7 +8,8 @@ let jtockURL;
 }*/
 
 const auth = new JtockAuth({
-  host: jtockURL,
+  host: "http://localhost:3000",
+  prefixUrl: "/api",
   debug: false,
 });
 
