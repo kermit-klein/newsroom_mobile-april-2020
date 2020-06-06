@@ -1,6 +1,7 @@
 import { useState } from "react";
 import * as React from "react";
-// import axios from "axios";
+import { connect, useSelector } from "react-redux";
+
 import {
   View,
   Text,
@@ -13,7 +14,31 @@ import {
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const authenticated = useSelector((state) => state.authenticated)
+  
+  const onSubmithandler = async (e) => {
+    debugger
+    //e.preventDefault();
+    try {
+      e.persist
+      const response = await authenticated.signIn(
+        e.target.email.value,
+        e.target.password.value
+      )
+        props.dispatch({
+          type: "CHECK_LOGIN",
+          payload: {
+            authenticated: response.data,
+            uid: response.data.uid
+          }
+        })
+    } 
+    catch (error) {
+        setMessage(error.response.data.errors[0])
+      }
+    
+    }
+  
   return (
     <View testID={"login-form"} style={styles.container}>
       <Text style={styles.sub}>Login</Text>
@@ -24,6 +49,8 @@ const Login = ({ navigation }) => {
           placeholder="Email"
           keyboardType="email-address"
           underlineColorAndroid="transparent"
+          id="email"
+          value={email}
           onChangeText={(email) => setEmail(email)}
         />
       </View>
@@ -34,6 +61,8 @@ const Login = ({ navigation }) => {
           placeholder="Password"
           secureTextEntry={true}
           underlineColorAndroid="transparent"
+          id="password"
+          value={password}
           onChangeText={(password) => setPassword(password)}
         />
       </View>
@@ -41,7 +70,7 @@ const Login = ({ navigation }) => {
       <TouchableHighlight
         testID={"submit"}
         style={[styles.buttonContainer, styles.loginButton]}
-        onPress={() => console.log("LOGIN")}
+        onPress={onSubmithandler}
       >
         <Text style={styles.loginText}>Submit</Text>
       </TouchableHighlight>
