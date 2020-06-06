@@ -17,7 +17,8 @@ const Login = ({ navigation }) => {
   const authenticated = useSelector((state) => state.authenticated)
   
   const onSubmithandler = async (e) => {
-    debugger
+    console.log(email)
+    console.log(password) 
     //e.preventDefault();
     try {
       e.persist
@@ -70,7 +71,7 @@ const Login = ({ navigation }) => {
       <TouchableHighlight
         testID={"submit"}
         style={[styles.buttonContainer, styles.loginButton]}
-        onPress={onSubmithandler}
+        onPress={(e) => onSubmithandler()}
       >
         <Text style={styles.loginText}>Submit</Text>
       </TouchableHighlight>
