@@ -2,14 +2,13 @@ import { useState } from "react";
 import * as React from "react";
 import { connect, useSelector } from "react-redux";
 import auth from "../modules/auth";
-
 import {
   View,
   Text,
   StyleSheet,
   TouchableHighlight,
   TextInput,
-  Image,
+  Modal,
 } from "react-native";
 
 const Login = ({ dispatch }) => {
@@ -33,45 +32,62 @@ const Login = ({ dispatch }) => {
     } catch (error) {
       console.log(error);
       debugger;
-      //setErrorMessage(error.response.data.errors[0])
     }
   };
   return (
-    <View testID={"login-form"} style={styles.container}>
-      <Text style={styles.sub}>Login</Text>
-      <View style={styles.inputContainer}>
-        <TextInput
-          testID={"email"}
-          style={styles.inputs}
-          placeholder="Email"
-          keyboardType="email-address"
-          underlineColorAndroid="transparent"
-          id="email"
-          value={email}
-          onChangeText={(email) => setEmail(email)}
-        />
-      </View>
-      <View style={styles.inputContainer}>
-        <TextInput
-          testID={"password"}
-          style={styles.inputs}
-          placeholder="Password"
-          secureTextEntry={true}
-          underlineColorAndroid="transparent"
-          id="password"
-          value={password}
-          onChangeText={(password) => setPassword(password)}
-        />
-      </View>
+    <View>
+      {!authenticated && (
+        <Modal
+          style={styles.formModal}
+          presentationStyle="overFullScreen"
+          animationType="fade"
+          transparent={true}
+          visible={true}
+          onRequestClose={() => {
+            Alert.alert("Modal has been closed.");
+          }}
+        >
 
-      <TouchableHighlight
-        testID={"submit"}
-        style={[styles.buttonContainer, styles.loginButton]}
-        onPress={() => onSubmithandler()}
-      >
-        <Text style={styles.loginText}>Submit</Text>
-      </TouchableHighlight>
+          <View testID={"login-form"} style={styles.container}>
+            <Text style={styles.sub}>Login</Text>
+            <View style={styles.inputContainer}>
+              <TextInput
+                testID={"email"}
+                style={styles.inputs}
+                placeholder="Email"
+                keyboardType="email-address"
+                underlineColorAndroid="transparent"
+                id="email"
+                value={email}
+                onChangeText={(email) => setEmail(email)}
+              />
+            </View>
+            <View style={styles.inputContainer}>
+              <TextInput
+                testID={"password"}
+                style={styles.inputs}
+                placeholder="Password"
+                secureTextEntry={true}
+                underlineColorAndroid="transparent"
+                id="password"
+                value={password}
+                onChangeText={(password) => setPassword(password)}
+              />
+            </View>
+
+            <TouchableHighlight
+              testID={"submit"}
+              style={[styles.buttonContainer, styles.loginButton]}
+              onPress={() => onSubmithandler()}
+            >
+              <Text style={styles.loginText}>Submit</Text>
+            </TouchableHighlight>
+          </View>
+        </Modal>
+      )}
+      <Text>{errorMessage}</Text>
     </View>
+      
   );
 };
 
