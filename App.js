@@ -10,11 +10,11 @@ import Footer from "./src/components/Footer";
 import { Provider } from "react-redux";
 import configureStore from "./src/state/store/configureStore";
 
-axios.defaults.baseURL = "http://localhost:3000/api";
+axios.defaults.baseURL = "https://newsroom-api.herokuapp.com/api";
 const Stack = createStackNavigator();
 const store = configureStore();
 
-export default function App() {
+const App = () => {
   return (
     <>
       <Provider store={store}>
@@ -30,4 +30,6 @@ export default function App() {
       </Provider>
     </>
   );
-}
+};
+
+export default App;

@@ -3,11 +3,8 @@ import { View, Text, StyleSheet, Modal, TouchableOpacity } from "react-native";
 import { useSelector, connect } from "react-redux";
 import Login from "./Login";
 import { AppLoading } from "expo";
-import {
-  useFonts,
-  CinzelDecorative_900Black,
-} from "@expo-google-fonts/cinzel-decorative";
-import { EBGaramond_400Regular } from "@expo-google-fonts/eb-garamond";
+import { useFonts } from "@use-expo/font";
+import fonts from "./module/fonts";
 
 const Footer = ({ dispatch }) => {
   let [fontsLoaded] = useFonts({
