@@ -1,6 +1,6 @@
 import { useState } from "react";
 import * as React from "react";
-import { connect, useSelector } from "react-redux";
+import { connect } from "react-redux";
 import auth from "../modules/auth";
 import {
   View,
@@ -13,7 +13,6 @@ import {
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const authenticated = useSelector((state) => state.authenticated);
   const [errorMessage, setErrorMessage] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
 

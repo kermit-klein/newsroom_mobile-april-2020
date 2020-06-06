@@ -68,7 +68,6 @@ const Footer = ({ dispatch }) => {
             setModalVisible={setModalVisible}
           />
         </Modal>
-        {/* <Text style={styles.sub}> Daily News Sense</Text> */}
         {modalShow}
       </View>
     );
@@ -100,7 +99,6 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     justifyContent: "center",
     alignItems: "center",
-    // backgroundColor: "#FFFFFF",
   },
 });
 

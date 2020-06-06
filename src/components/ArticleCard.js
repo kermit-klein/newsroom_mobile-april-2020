@@ -14,10 +14,7 @@ const ArticleCard = (props) => {
       }}
     >
       <View>
-        <Image
-          source={{ uri: props.article.image }}
-          style={styles.image}
-        />
+        <Image source={{ uri: props.article.image }} style={styles.image} />
         <Text id={`article-title-${props.article.id}`} style={styles.title}>
           {props.article.title}
         </Text>

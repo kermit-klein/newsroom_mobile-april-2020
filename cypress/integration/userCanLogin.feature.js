@@ -9,7 +9,7 @@ describe("User can login", () => {
     cy.viewport("iphone-x");
   });
 
-  xdescribe("successfully", () => {
+  describe("successfully", () => {
     beforeEach(() => {
       cy.route({
         method: "POST",
@@ -60,11 +60,6 @@ describe("User can login", () => {
 
   describe("unsuccessfully", () => {
     beforeEach(() => {
-      // cy.route({
-      //   method: "GET",
-      //   url: "**/auth/*",
-      //   response: "fixture:unsuccessful_login.json",
-
       cy.route({
         method: "POST",
         url: "http://localhost:3000/api/auth*",

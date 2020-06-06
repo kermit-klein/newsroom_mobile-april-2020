@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ArticleCard from "../components/ArticleCard";
-import {
-  FlatList,
-  StyleSheet,
-} from "react-native";
-import { EBGaramond_400Regular } from "@expo-google-fonts/eb-garamond";
+import { FlatList } from "react-native";
 
 const ArticleList = ({ navigation }) => {
   const [articleList, setArticleList] = useState([]);
@@ -34,14 +30,5 @@ const ArticleList = ({ navigation }) => {
     </>
   );
 };
-const styles = StyleSheet.create({
-  sub: {
-    color: "white",
-    fontSize: 15,
-    fontFamily: "EBGaramond_400Regular",
-    padding: 5,
-    backgroundColor: "#409d9b",
-    textAlign: "center",
-  },
-});
+
 export default ArticleList;
