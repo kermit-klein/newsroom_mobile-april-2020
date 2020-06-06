@@ -6,7 +6,7 @@ describe("visitor can view all listed articles", () => {
       url: "http://localhost:3000/api/articles",
       response: "fixture:article_list.json",
     });
-    cy.viewport("samsung-s10");
+    cy.viewport("iphone-x");
     cy.visit("/");
   });
   it("articles are shown", () => {
@@ -15,11 +15,11 @@ describe("visitor can view all listed articles", () => {
   });
 
   it("images are shown", () => {
-    cy.get(".article-image-1")
+    cy.get("[data-testid=article-image-1]")
       .find("img")
       .should("have.attr", "src")
       .should("include", "picsum.photos/800/600");
-    cy.get(".article-image-2")
+    cy.get("[data-testid=article-image-2]")
       .find("img")
       .should("have.attr", "src")
       .should("include", "picsum.photos/500/400");

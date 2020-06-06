@@ -34,6 +34,7 @@ const Category = (props) => {
           dropDownStyle={{
             backgroundColor: "#dbdbdb",
           }}
+          dropDownMaxHeight={185}
           labelStyle={{
             color: "black",
             fontSize: 16,

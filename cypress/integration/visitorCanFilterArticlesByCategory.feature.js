@@ -34,7 +34,7 @@ describe("Visitor can filter by category", () => {
       url: "http://localhost:3000/api/articles",
       response: "fixture:article_other_cat_list.json",
     });
-    cy.viewport("samsung-s10");
+    cy.viewport("iphone-x");
     cy.visit("/");
   });
 

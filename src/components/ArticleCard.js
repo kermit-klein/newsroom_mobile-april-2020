@@ -17,7 +17,7 @@ const ArticleCard = (props) => {
         <Image
           source={{ uri: props.article.image }}
           style={styles.image}
-          className={`article-image-${props.article.id}`}
+          testID={`article-image-${props.article.id}`}
         />
         <Text id={`article-title-${props.article.id}`} style={styles.title}>
           {props.article.title}
