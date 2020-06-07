@@ -7,6 +7,7 @@ import { useFonts } from "@use-expo/font";
 import fonts from "./module/fonts";
 import auth from "../modules/auth";
 import styles from "./module/Footer.component.style.js";
+import * as RootNavigation from "../state/reducers/rootNavigation.js";
 
 const Footer = ({ dispatch }) => {
   let [fontsLoaded] = useFonts(fonts);
@@ -74,8 +75,13 @@ const Footer = ({ dispatch }) => {
             dispatch={dispatch}
             setModalVisible={setModalVisible}
           />
+          <TouchableOpacity
+            style={styles.background}
+            onPress={() => RootNavigation.navigate("ArticleList")}
+          >
+            {modalShow}
+          </TouchableOpacity>
         </Modal>
-        {modalShow}
       </View>
     );
   }

@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ArticleCard from "../components/ArticleCard";
-import { FlatList } from "react-native";
+import { FlatList, View, TouchableOpacity } from "react-native";
 import Category from "./Category";
-import ScrollArrow from "./ScrollArrrow";
+import Icon from "react-native-vector-icons/AntDesign";
+import styles from "./module/ArticleList.component.style.js";
 
 const ArticleList = ({ navigation }) => {
   const [category, setCategory] = useState("all");
   const [articleList, setArticleList] = useState([]);
+
+  let flatlistref = null;
+
   const fetchArticleList = async () => {
     try {
       const response = await axios.get("/articles", { category: category });
@@ -16,6 +20,7 @@ const ArticleList = ({ navigation }) => {
       console.log(error);
     }
   };
+
   useEffect(() => {
     fetchArticleList();
   }, [category]);
@@ -24,20 +29,34 @@ const ArticleList = ({ navigation }) => {
     setCategory(item.value);
   };
 
+  const scrollToTopAndRefresh = () => {
+    flatlistref.scrollToOffset({ y: 0, animated: true });
+  };
   return (
     <>
       {articleList && (
         <>
           <Category categorySelect={categorySelect} />
-          <FlatList
-            data={articleList}
-            renderItem={({ item }) => (
-              <ArticleCard article={item} navigation={navigation} />
-            )}
-          />
+          <View style={styles.background}>
+            <FlatList
+              ref={(ref) => (flatlistref = ref)}
+              data={articleList}
+              renderItem={({ item }) => (
+                <ArticleCard article={item} navigation={navigation} />
+              )}
+            />
+          </View>
+          <View testID="iconContainer" style={styles.iconContainer}>
+            <TouchableOpacity
+              testID="iconContainer"
+              onPress={scrollToTopAndRefresh}
+              style={styles.icon}
+            >
+              <Icon name="upcircle" size={30} color="#FFFFFF" />
+            </TouchableOpacity>
+          </View>
         </>
       )}
-      <ScrollArrow />
     </>
   );
 };
