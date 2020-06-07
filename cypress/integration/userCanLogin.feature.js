@@ -7,6 +7,8 @@ describe("User can login", () => {
       response: "fixture:article_list.json",
     });
     cy.viewport("iphone-x");
+    cy.visit("/");
+    cy.wait(1000);
   });
 
   describe("successfully", () => {
@@ -35,8 +37,7 @@ describe("User can login", () => {
           uid: "user@mail.com",
         },
       });
-      cy.visit("/");
-      cy.wait(1000);
+
       cy.get("[data-testid=Loginbutton]").click();
       cy.get("[data-testid=login-form]").within(() => {
         cy.get("[data-testid=email]").type("user@mail.com");
@@ -57,6 +58,14 @@ describe("User can login", () => {
       cy.get("[data-testid=article-1]").should("exist");
     });
   });
+  
+  describe("check window functionality", () => {
+    it("check that the login pop up is working", () => {
+      cy.get("[data-testid=Loginbutton]").click();
+      cy.get("[data-testid=loginText]").should("exist").click();
+      cy.get("[data-testid=loginText]").should("not.exist");
+    });
+  });
 
   describe("unsuccessfully", () => {
     beforeEach(() => {
@@ -69,7 +78,6 @@ describe("User can login", () => {
         },
         status: 400,
       });
-      cy.visit("/");
       cy.get("[data-testid=Loginbutton]").click();
       cy.get("[data-testid=login-form]").within(() => {
         cy.get("[data-testid=email]").type("user@mail.com");

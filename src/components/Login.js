@@ -41,7 +41,14 @@ const Login = (props) => {
     <View>
       {props.visibleForm && (
         <View testID={"login-form"} style={styles.background}>
-          <Text style={styles.sub}>Login</Text>
+          <TouchableOpacity
+            testID={"loginText"}
+            onPress={() => {
+              props.setModalVisible(false);
+            }}
+          >
+            <Text style={styles.sub}>Login</Text>
+          </TouchableOpacity>
           <View style={styles.inputContainer}>
             <TextInput
               testID={"email"}
@@ -49,7 +56,6 @@ const Login = (props) => {
               placeholder="Email"
               keyboardType="email-address"
               underlineColorAndroid="transparent"
-              id="email"
               value={email}
               onChangeText={(email) => setEmail(email)}
             />
@@ -61,7 +67,6 @@ const Login = (props) => {
               placeholder="Password"
               secureTextEntry={true}
               underlineColorAndroid="transparent"
-              id="password"
               value={password}
               onChangeText={(password) => setPassword(password)}
             />
