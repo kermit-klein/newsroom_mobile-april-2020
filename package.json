@@ -23,6 +23,7 @@
     "expo": "~37.0.3",
     "expo-font": "~8.1.0",
     "expo-linear-gradient": "~8.1.0",
+    "j-tockauth": "^1.2.7",
     "navbar-native": "^1.6.1",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
@@ -36,7 +37,9 @@
     "react-native-safe-area-context": "0.7.3",
     "react-native-screens": "~2.2.0",
     "react-native-vector-icons": "^6.6.0",
-    "react-native-web": "~0.11.7"
+    "react-native-web": "~0.11.7",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
