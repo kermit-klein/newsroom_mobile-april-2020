@@ -31,7 +31,7 @@ describe("User can login", () => {
       });
       cy.route({
         method: "DELETE",
-        url: "http://localhost:3000/api/auth/*",
+        url: "**/auth/*",
         response: "fixture:logout.json",
         headers: {
           uid: "user@mail.com",
@@ -58,7 +58,7 @@ describe("User can login", () => {
       cy.get("[data-testid=article-1]").should("exist");
     });
   });
-  
+
   describe("check window functionality", () => {
     it("check that the login pop up is working", () => {
       cy.get("[data-testid=Loginbutton]").click();
@@ -71,7 +71,7 @@ describe("User can login", () => {
     beforeEach(() => {
       cy.route({
         method: "POST",
-        url: "http://localhost:3000/api/auth*",
+        url: "**/auth/*",
         response: "fixture:unsuccessful_login.json",
         headers: {
           uid: "user@mail.com",
@@ -86,7 +86,10 @@ describe("User can login", () => {
       });
     });
     it("with invalid credentials", () => {
-      cy.get("[data-testid=error-message]").should("exist");
+      cy.get("[data-testid=error-message]").should(
+        "contain",
+        "Invalid login credentials. Please try again."
+      );
     });
   });
 });

@@ -7,7 +7,7 @@ import { useFonts } from "@use-expo/font";
 import fonts from "./module/fonts";
 
 const Footer = ({ dispatch }) => {
-  let [fontsLoaded] = useFonts(fonts);  
+  let [fontsLoaded] = useFonts(fonts);
   const authenticated = useSelector((state) => state.authenticated);
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -45,13 +45,19 @@ const Footer = ({ dispatch }) => {
     return <AppLoading />;
   } else {
     return (
-      <View style={styles.background}>
+      <View
+        style={[
+          styles.background,
+          modalVisible ? { backgroundColor: "rgba(0, 0, 0, 0.3)" } : "",
+        ]}
+      >
         <Modal
           style={styles.formModal}
           presentationStyle="overFullScreen"
-          animationType="slide"
+          animationType={"slide"}
+          backdropOpacity={1}
           transparent={true}
-          visible={modalVisible}
+          isVisible={modalVisible}
           onRequestClose={() => {
             Alert.alert("Modal has been Opened.");
           }}
@@ -89,8 +95,7 @@ const styles = StyleSheet.create({
   formModal: {
     justifyContent: "center",
     alignItems: "center",
-    borderColor: "#409d9b",
-    borderWidth: 2,
+    borderWidth: 0,
   },
 });
 

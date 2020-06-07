@@ -27,20 +27,21 @@ const Login = (props) => {
         });
       props.setModalVisible(false);
     } catch (error) {
-      setErrorMessage(error.message);
+      let err = error;
+      setErrorMessage(err.response.data.errors[0]);
     }
   };
 
-  const message = !!errorMessage && (
+  const message = !!errorMessage && props.visibleForm && (
     <Text style={styles.errorText} testID={"error-message"}>
-      Failed to login. Try Again! <Text>{errorMessage}</Text>
+      {errorMessage}
     </Text>
   );
 
   return (
-    <View>
+    <View style={styles.background}>
       {props.visibleForm && (
-        <View testID={"login-form"} style={styles.background}>
+        <View testID={"login-form"}>
           <TouchableOpacity
             testID={"loginText"}
             onPress={() => {
@@ -90,17 +91,13 @@ const Login = (props) => {
 const styles = StyleSheet.create({
   backgound: {
     flex: 1,
-    marginBottom: 50,
-    marginTop: 50,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#FFFFFF",
     paddingTop: 30,
-    paddingBottom: 50,
   },
   inputContainer: {
-    borderColor: "#409d9b",
     backgroundColor: "#FFFFFF",
+    borderColor: "#409d9b",
     borderWidth: 2,
     borderRadius: 10,
     height: 40,
@@ -135,7 +132,7 @@ const styles = StyleSheet.create({
     fontFamily: "EBGaramond_400Regular",
   },
   sub: {
-    color: "#FFFFFF",
+    color: "#409d9b",
     fontSize: 25,
     fontFamily: "EBGaramond_400Regular",
     padding: 15,
