@@ -3,6 +3,7 @@ import axios from "axios";
 import ArticleCard from "../components/ArticleCard";
 import { FlatList } from "react-native";
 import Category from "./Category";
+import ScrollArrow from "./ScrollArrrow";
 
 const ArticleList = ({ navigation }) => {
   const [category, setCategory] = useState("all");
@@ -36,6 +37,7 @@ const ArticleList = ({ navigation }) => {
           />
         </>
       )}
+      <ScrollArrow />
     </>
   );
 };

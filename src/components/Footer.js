@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Modal, TouchableOpacity } from "react-native";
+import { View, Text, Modal, TouchableOpacity } from "react-native";
 import { useSelector, connect } from "react-redux";
 import Login from "./Login";
 import { AppLoading } from "expo";
 import { useFonts } from "@use-expo/font";
 import fonts from "./module/fonts";
 import auth from "../modules/auth";
+import styles from "./module/Footer.component.style.js";
 
 const Footer = ({ dispatch }) => {
   let [fontsLoaded] = useFonts(fonts);
@@ -79,30 +80,5 @@ const Footer = ({ dispatch }) => {
     );
   }
 };
-const styles = StyleSheet.create({
-  header: {
-    color: "white",
-    fontSize: 20,
-    fontFamily: "CinzelDecorative_900Black",
-    padding: 20,
-  },
-  background: {
-    flexDirection: "row",
-    backgroundColor: "#409d9b",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  sub: {
-    color: "white",
-    fontSize: 20,
-    fontFamily: "EBGaramond_400Regular",
-    padding: 15,
-  },
-  formModal: {
-    justifyContent: "center",
-    alignItems: "center",
-    borderWidth: 0,
-  },
-});
 
 export default connect()(Footer);

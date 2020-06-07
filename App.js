@@ -10,7 +10,8 @@ import Footer from "./src/components/Footer";
 import { Provider } from "react-redux";
 import configureStore from "./src/state/store/configureStore";
 
-axios.defaults.baseURL = "https://localhost:3000/api";
+// axios.defaults.baseURL = "https://localhost:3000/api";
+axios.defaults.baseURL = "https://newsroom-api.herokuapp.com/api";
 const Stack = createStackNavigator();
 const store = configureStore();
 
