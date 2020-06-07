@@ -5,11 +5,15 @@ import { FlatList } from "react-native";
 import Category from "./Category";
 
 const ArticleList = ({ navigation }) => {
-  const [category, setCategory] = useState("all");
+  const [category, setCategory] = useState();
   const [articleList, setArticleList] = useState([]);
   const fetchArticleList = async () => {
     try {
-      const response = await axios.get("/articles", { category: category });
+      const categoryParam = category && { category: category };
+      const params = { ...categoryParam };
+      const response = await axios.get("/articles", {
+        params: params,
+      });
       setArticleList(response.data.articles);
     } catch (error) {
       console.log(error);
@@ -20,7 +24,7 @@ const ArticleList = ({ navigation }) => {
   }, [category]);
 
   const categorySelect = (item) => {
-    setCategory(item.value);
+    setCategory(item);
   };
 
   return (

@@ -10,25 +10,29 @@ import auth from "../modules/auth";
 const Footer = ({ dispatch }) => {
   let [fontsLoaded] = useFonts(fonts);
   const authenticated = useSelector((state) => state.authenticated);
+  const uid = useSelector((state) => state.uid);
   const [modalVisible, setModalVisible] = useState(false);
 
   const showButton = authenticated ? (
-    <TouchableOpacity
-      testID={"Logoutbutton"}
-      onPress={async () => {
-        try {
-          await auth.signOut();
-          dispatch({
-            type: "CHECK_LOGIN",
-            payload: { authenticated: false },
-          });
-        } catch (error) {
-          console.log(error);
-        }
-      }}
-    >
-      <Text style={styles.sub}>Logout</Text>
-    </TouchableOpacity>
+    <>
+      <Text>Welcome, {uid}</Text>
+      <TouchableOpacity
+        testID={"Logoutbutton"}
+        onPress={async () => {
+          try {
+            await auth.signOut();
+            dispatch({
+              type: "CHECK_LOGIN",
+              payload: { authenticated: false, role: "" },
+            });
+          } catch (error) {
+            console.log(error);
+          }
+        }}
+      >
+        <Text style={styles.sub}>Logout</Text>
+      </TouchableOpacity>
+    </>
   ) : (
     <TouchableOpacity
       testID={"Loginbutton"}
