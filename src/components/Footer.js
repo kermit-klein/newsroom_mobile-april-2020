@@ -7,10 +7,7 @@ import { useFonts } from "@use-expo/font";
 import fonts from "./module/fonts";
 
 const Footer = ({ dispatch }) => {
-  let [fontsLoaded] = useFonts({
-    CinzelDecorative_900Black,
-    EBGaramond_400Regular,
-  });
+  let [fontsLoaded] = useFonts(fonts);  
   const authenticated = useSelector((state) => state.authenticated);
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -94,8 +91,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderColor: "#409d9b",
     borderWidth: 2,
-    justifyContent: "center",
-    alignItems: "center",
   },
 });
 

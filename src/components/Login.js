@@ -14,9 +14,8 @@ const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [modalVisible, setModalVisible] = useState(false);
 
-  const signin = async () => {
+  const onSubmithandler = async () => {
     try {
       const response = await auth.signIn(email, password);
       response.success &&
@@ -26,16 +25,18 @@ const Login = (props) => {
             authenticated: response.success,
           },
         });
+      props.setModalVisible(false);
     } catch (error) {
-      debugger;
-      console.log(error.response.data.errors[0]);
+      setErrorMessage(error.message);
     }
   };
 
-  const onSubmithandler = (event) => {
-    event.persist();
-    signin();
-  };
+  const message = !!errorMessage && (
+    <Text style={styles.errorText} testID={"error-message"}>
+      Failed to login. Try Again! <Text>{errorMessage}</Text>
+    </Text>
+  );
+
   return (
     <View>
       {props.visibleForm && (
@@ -68,18 +69,15 @@ const Login = (props) => {
           <TouchableOpacity
             testID={"submit"}
             style={styles.buttonContainer}
-            onPress={(e) => {
-              onSubmithandler(e);
-              props.setModalVisible(false);
+            onPress={() => {
+              onSubmithandler();
             }}
           >
             <Text style={styles.submitText}>Submit</Text>
           </TouchableOpacity>
         </View>
       )}
-      <Text style={styles.errorText} testID={"error-message"}>
-        {errorMessage}
-      </Text>
+      {message}
     </View>
   );
 };
@@ -104,7 +102,6 @@ const styles = StyleSheet.create({
     width: 250,
     marginBottom: 20,
     flexDirection: "column",
-    alignItems: "center",
   },
   inputs: {
     height: 45,
@@ -133,7 +130,7 @@ const styles = StyleSheet.create({
     fontFamily: "EBGaramond_400Regular",
   },
   sub: {
-    color: "#409d9b",
+    color: "#FFFFFF",
     fontSize: 25,
     fontFamily: "EBGaramond_400Regular",
     padding: 15,

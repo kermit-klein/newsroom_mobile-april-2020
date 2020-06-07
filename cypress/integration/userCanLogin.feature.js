@@ -78,10 +78,7 @@ describe("User can login", () => {
       });
     });
     it("with invalid credentials", () => {
-      cy.get("[data-testid=error-message]").should(
-        "contain",
-        "Invalid login credentials. Please try again."
-      );
+      cy.get("[data-testid=error-message]").should("exist");
     });
   });
 });
