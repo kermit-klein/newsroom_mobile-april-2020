@@ -23,11 +23,14 @@ const Login = (props) => {
           type: "CHECK_LOGIN",
           payload: {
             authenticated: response.success,
+            role: response.data.role,
+            uid: response.data.uid,
           },
         });
       props.setModalVisible(false);
     } catch (error) {
       let err = error;
+      debugger;
       setErrorMessage(err.response.data.errors[0]);
     }
   };

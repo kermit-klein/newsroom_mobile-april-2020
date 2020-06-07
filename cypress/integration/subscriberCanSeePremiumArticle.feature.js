@@ -47,6 +47,66 @@ describe("visitor can only view part of premium article", () => {
   it("premium blocker has informative message", () => {
     cy.wait(1000);
     cy.get("[data-testid=article-2]").click();
-    cy.get("[data-testid=premium-blocker]").should("contain", "This is a premium article");
+    cy.get("[data-testid=premium-blocker]").should(
+      "contain",
+      "This is a premium article"
+    );
+  });
+});
+
+describe("Subscriber can see premium article", () => {
+  beforeEach(() => {
+    cy.server();
+    cy.route({
+      method: "POST",
+      url: "**/auth/*",
+      response: "fixture:sub_successful_login.json",
+      headers: {
+        uid: "user@mail.com",
+      },
+    });
+    cy.route({
+      method: "GET",
+      url: "**/auth/*",
+      response: "fixture:sub_successful_login.json",
+      headers: {
+        uid: "user@mail.com",
+      },
+    });
+    cy.route({
+      method: "GET",
+      url: "http://localhost:3000/api/articles/1",
+      response: "fixture:single_free_article.json",
+    });
+    cy.route({
+      method: "GET",
+      url: "http://localhost:3000/api/articles/2",
+      response: "fixture:single_premium_article_for_sub.json",
+    });
+    cy.route({
+      method: "GET",
+      url: "http://localhost:3000/api/articles",
+      response: "fixture:article_list.json",
+    });
+    cy.viewport("iphone-x");
+    cy.visit("/");
+    cy.get("[data-testid=Loginbutton]").click();
+    cy.get("[data-testid=login-form]").within(() => {
+      cy.get("[data-testid=email]").type("user@mail.com");
+      cy.get("[data-testid=password]").type("password");
+      cy.get("[data-testid=submit]").contains("Submit").click();
+    });
+  });
+
+  it("premium article is fully displayed", () => {
+    cy.wait(1000);
+    cy.get("[data-testid=article-2]").click();
+    cy.get("div#article-title-2").should("contain", "Premium title");
+    cy.get("#article-date-2").should("contain", "2020-02-20 13:37");
+    cy.get("#article-body-2").should(
+      "contain",
+      "Maecenas interdum varius fringilla."
+    );
+    cy.get("[data-testid=premium-blocker]").should("not.exist");
   });
 });

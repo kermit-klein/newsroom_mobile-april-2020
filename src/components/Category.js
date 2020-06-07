@@ -7,7 +7,7 @@ import fonts from "./module/fonts";
 
 const Category = (props) => {
   let listCategory = [
-    { label: "All", value: "all" },
+    { label: "All", value: null },
     { label: "Current", value: "current" },
     { label: "Economy", value: "economy" },
     { label: "World", value: "world" },

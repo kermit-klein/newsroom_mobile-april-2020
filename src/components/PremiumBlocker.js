@@ -27,7 +27,9 @@ const PremiumBlocker = () => {
         <Text>
           <AntDesign name="lock1" size="24" color="white" />
         </Text>
-        <Text style={styles.premiumText}>Sign in to view this article</Text>
+        <Text style={styles.premiumText}>
+          Become a premium member to view this article
+        </Text>
       </View>
     </>
   );

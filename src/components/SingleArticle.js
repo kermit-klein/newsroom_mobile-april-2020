@@ -3,10 +3,12 @@ import axios from "axios";
 import { View, Image, Text, StyleSheet } from "react-native";
 import { EBGaramond_400Regular } from "@expo-google-fonts/eb-garamond";
 import PremiumBlocker from "./PremiumBlocker";
+import { useSelector } from "react-redux";
 
 const SingleArticle = ({ route }) => {
   const { articleId } = route.params;
   const [article, setArticle] = useState({});
+  const role = useSelector((state) => state.role);
 
   const chooseArticle = async () => {
     let response = await axios.get(`/articles/${articleId}`);
@@ -34,7 +36,7 @@ const SingleArticle = ({ route }) => {
           <Text id={"article-body-" + article.id} style={styles.p}>
             {article.body}
           </Text>
-          {article.premium && <PremiumBlocker />}
+          {article.premium && role != "subscriber" && <PremiumBlocker />}
         </View>
       </View>
     </View>
