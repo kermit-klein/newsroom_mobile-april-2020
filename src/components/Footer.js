@@ -5,6 +5,7 @@ import Login from "./Login";
 import { AppLoading } from "expo";
 import { useFonts } from "@use-expo/font";
 import fonts from "./module/fonts";
+import auth from "../modules/auth";
 
 const Footer = ({ dispatch }) => {
   let [fontsLoaded] = useFonts(fonts);
@@ -14,11 +15,16 @@ const Footer = ({ dispatch }) => {
   const showButton = authenticated ? (
     <TouchableOpacity
       testID={"Logoutbutton"}
-      onPress={() => {
-        dispatch({
-          type: "CHECK_LOGIN",
-          payload: { authenticated: false },
-        });
+      onPress={async () => {
+        try {
+          await auth.signOut();
+          dispatch({
+            type: "CHECK_LOGIN",
+            payload: { authenticated: false },
+          });
+        } catch (error) {
+          console.log(error);
+        }
       }}
     >
       <Text style={styles.sub}>Logout</Text>
