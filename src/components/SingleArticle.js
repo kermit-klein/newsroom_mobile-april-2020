@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { View, Image, Text, StyleSheet } from "react-native";
 import { EBGaramond_400Regular } from "@expo-google-fonts/eb-garamond";
+import PremiumBlocker from "./PremiumBlocker";
 
 const SingleArticle = ({ route }) => {
   const { articleId } = route.params;
@@ -32,6 +33,7 @@ const SingleArticle = ({ route }) => {
         <View>
           <Text id={"article-body-" + article.id} style={styles.p}>
             {article.body}
+            <PremiumBlocker />
           </Text>
         </View>
       </View>
