@@ -1,12 +1,28 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
 
 const PremiumBlocker = () => {
   return (
     <>
-      <View id="cover" style={styles.cover}></View>
-      <View id="premium-blocker" style={styles.premiumBlocker}>
+      <LinearGradient
+        colors={[
+          "rgba(255, 255, 255, 0)",
+          "rgba(255, 255, 255, 0.7)",
+          "rgba(255, 255, 255, 1)",
+        ]}
+        style={{
+          position: "relative",
+          marginTop: -50,
+          left: 0,
+          right: 0,
+          top: 0,
+          height: 40,
+          zIndex: 12,
+        }}
+      ></LinearGradient>
+      <View testID="premium-blocker" style={styles.premiumBlocker}>
         <Text style={styles.premiumText}>This is a premium article</Text>
         <Text>
           <AntDesign name="lock1" size="24" color="white" />
@@ -17,21 +33,7 @@ const PremiumBlocker = () => {
   );
 };
 
-// #premium-blocker > * {
-//   color: white;
-//   margin-top: 5px;
-//   margin-bottom: 5px;
-// }
-
 const styles = StyleSheet.create({
-  cover: {
-    background:
-      "linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 1))",
-    marginTop: -10,
-    height: 40,
-    position: "relative",
-    zIndex: 12,
-  },
   premiumBlocker: {
     display: "flex",
     flexDirection: "column",

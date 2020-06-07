@@ -33,8 +33,8 @@ const SingleArticle = ({ route }) => {
         <View>
           <Text id={"article-body-" + article.id} style={styles.p}>
             {article.body}
-            <PremiumBlocker />
           </Text>
+            <PremiumBlocker />
         </View>
       </View>
     </View>

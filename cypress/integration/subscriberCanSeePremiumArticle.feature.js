@@ -41,11 +41,12 @@ describe("visitor can only view part of premium article", () => {
       "not.contain",
       "Maecenas interdum varius fringilla."
     );
-    cy.get("#premium-blocker").should("exist");
+    cy.get("[data-testid=premium-blocker]").should("exist");
   });
 
   it("premium blocker has informative message", () => {
-    cy.visit("/article/2");
-    cy.get("#premium-blocker").should("contain", "This is a premium article");
+    cy.wait(1000);
+    cy.get("[data-testid=article-2]").click();
+    cy.get("[data-testid=premium-blocker]").should("contain", "This is a premium article");
   });
 });
