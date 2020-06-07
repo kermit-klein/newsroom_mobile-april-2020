@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ArticleCard from "../components/ArticleCard";
-import { FlatList, View } from "react-native";
+import { FlatList } from "react-native";
 import Category from "./Category";
 
 const ArticleList = ({ navigation }) => {
@@ -39,4 +39,5 @@ const ArticleList = ({ navigation }) => {
     </>
   );
 };
+
 export default ArticleList;
