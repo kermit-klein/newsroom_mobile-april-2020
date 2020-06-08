@@ -9,6 +9,7 @@ import axios from "axios";
 import Footer from "./src/components/Footer";
 import { Provider } from "react-redux";
 import configureStore from "./src/state/store/configureStore";
+import { navigationRef } from "./src/state/reducers/rootNavigation";
 
 axios.defaults.baseURL = "http://localhost:3000/api";
 const Stack = createStackNavigator();
@@ -18,7 +19,7 @@ const App = () => {
   return (
     <>
       <Provider store={store}>
-        <NavigationContainer>
+        <NavigationContainer ref={navigationRef}>
           <Header />
           <Stack.Navigator headerMode="none" initialRouteName="ArticleList">
             <Stack.Screen name="ArticleList" component={ArticleList} />

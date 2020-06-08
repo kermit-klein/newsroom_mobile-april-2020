@@ -1,0 +1,60 @@
+import { StyleSheet } from "react-native";
+
+export default StyleSheet.create({
+  backgound: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  inputContainer: {
+    backgroundColor: "#FFFFFF",
+    borderColor: "#409d9b",
+    borderWidth: 1,
+    borderRadius: 10,
+    height: 40,
+    width: 300,
+    marginBottom: 20,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    paddingLeft: 5,
+  },
+  inputs: {
+    height: 45,
+    marginLeft: 16,
+    borderBottomColor: "#FFFFFF",
+    flex: 1,
+  },
+  buttonContainer: {
+    height: 40,
+    width: 200,
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 20,
+    borderRadius: 30,
+    backgroundColor: "#409d9b",
+    shadowColor: "rgba(0.6, 0.5, 0.5, 0.5)",
+    shadowOpacity: 0.8,
+    elevation: 6,
+    shadowRadius: 20,
+    shadowOffset: { width: 2, height: 13 },
+  },
+  submitText: {
+    color: "#FFFFFF",
+    fontSize: 20,
+    letterSpacing: 1,
+    fontWeight: "bold",
+    fontFamily: "EBGaramond_400Regular",
+  },
+  sub: {
+    color: "#409d9b",
+    fontSize: 25,
+    fontFamily: "EBGaramond_400Regular",
+    padding: 15,
+    fontWeight: "bold",
+    letterSpacing: 1,
+  },
+  errorText: {
+    color: "red",
+  },
+});
